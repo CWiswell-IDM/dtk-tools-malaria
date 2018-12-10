@@ -52,6 +52,9 @@ class DurationsAnalyzer(BaseAnalyzer):
             ax.set_ylim([0,0.01])
             ax.annotate("Mean = %s" %np.mean(simulation_durations),xy = (250,0.009),size= 'large')
             ax.annotate(f"ScaleFactor = {sf}", xy=(250, 0.008), size='large')
+            
+            ax.set_xlabel('Infection Duration (days)')
+            ax.set_ylabel('Frequency')
 
             plt.savefig(path.join(self.working_dir, f"{sim_id}_{sf}_{seed}.eps"))
             plt.show()

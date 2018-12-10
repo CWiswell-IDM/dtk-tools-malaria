@@ -51,10 +51,6 @@ def prepare_malariatherapy_configbuilder(config_path, immunity_forcing=True, yea
     add_patient_report(cb)
     return cb
 
-def set_analyzers():
-    analyzers = []
-    analyzers.append(DurationsAnalyzer())
-    return analyzers
 
 def set_immune_forcing_builder(transition_matrix=None, scale_factor_array=[2, 5, 10, 100]):
     builder = ModBuilder.from_combos(
@@ -83,16 +79,23 @@ def run_experiment(configbuilder, experiment_name, experiment_builder, analyzers
     am.analyze()
 
 def build_all_pieces_and_run(cfg_path, experiment_name, immunity_forcing=True,
-                             scale_factor_file="scale_factor_array.json", years=1):
+                             scale_factor_file="scale_factor_array.json", years=1, debug=False):
     cb = prepare_malariatherapy_configbuilder(config_path=cfg_path, immunity_forcing=immunity_forcing)
-    analyzers = set_analyzers()
-    builder = ''
+    if debug:
+        print(f"DEBUG: config builder created\n")
+    analyzers = []
+    analyzers.append(DurationsAnalyzer())
+    if debug:
+        print(f"DEBUG: analyzers list created\n")
+    exp_builder = ''
     if immunity_forcing:
         transition_matrix = cb.config['parameters']['Parasite_Peak_Density_Probabilities']
         with open(scale_factor_file) as infile:
             scale_factor_array = json.load(infile)
-        builder = set_immune_forcing_builder(transition_matrix, scale_factor_array)
-    run_experiment(configbuilder=cb, experiment_name=experiment_name, experiment_builder=builder, analyzers=analyzers)
+        exp_builder = set_immune_forcing_builder(transition_matrix, scale_factor_array)
+    if debug:
+        print(f"DEBUG: experiement builder created\n")
+    run_experiment(configbuilder=cb, experiment_name=experiment_name, experiment_builder=exp_builder, analyzers=analyzers)
 
 if __name__ == "__main__":
     import argparse
