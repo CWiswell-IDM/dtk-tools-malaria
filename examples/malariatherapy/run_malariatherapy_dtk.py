@@ -13,8 +13,6 @@ notes and dependencies: Uses a special config 'from-cfg.json' in the bin directo
 updated immune model
 
 Institute for Disease Modeling, Bellevue, WA
-
-NOTE: you will need sympy for this
 """
 
 from os import path
@@ -82,11 +80,10 @@ def build_all_pieces_and_run(cfg_path, experiment_name, immunity_forcing=True,
                              scale_factor_file="scale_factor_array.json", years=1, debug=False):
     cb = prepare_malariatherapy_configbuilder(config_path=cfg_path, immunity_forcing=immunity_forcing)
     if debug:
-        print(f"DEBUG: config builder created\n")
-    analyzers = []
-    analyzers.append(DurationsAnalyzer())
+        print(f"DEBUG: config builder created")
+    analyzers = [DurationsAnalyzer()]
     if debug:
-        print(f"DEBUG: analyzers list created\n")
+        print(f"DEBUG: analyzers list created")
     exp_builder = ''
     if immunity_forcing:
         transition_matrix = cb.config['parameters']['Parasite_Peak_Density_Probabilities']
@@ -94,7 +91,7 @@ def build_all_pieces_and_run(cfg_path, experiment_name, immunity_forcing=True,
             scale_factor_array = json.load(infile)
         exp_builder = set_immune_forcing_builder(transition_matrix, scale_factor_array)
     if debug:
-        print(f"DEBUG: experiement builder created\n")
+        print(f"DEBUG: experiment builder created")
     run_experiment(configbuilder=cb, experiment_name=experiment_name, experiment_builder=exp_builder, analyzers=analyzers)
 
 if __name__ == "__main__":
@@ -110,11 +107,11 @@ if __name__ == "__main__":
     args = p.parse_args()
 
     if args.debug:
-        print(f"Arguments: {args}\n")
+        print(f"DEBUG: Arguments: {args}\n")
 
     build_all_pieces_and_run(cfg_path=args.config,
                              experiment_name=args.experimentname,
                              immunity_forcing=args.forceimmunity,
                              scale_factor_file=args.scalefactorfile,
-                             years=1)
+                             years=1, debug=args.debug)
 
