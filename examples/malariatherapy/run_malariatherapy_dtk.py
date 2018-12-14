@@ -38,6 +38,7 @@ debug = False
 
 
 def set_immune_forcing_builder(transition_matrix=None, scale_factor_array=[2, 5, 10, 100]):
+    """Creates an experiment builder setting up immunity based on scale factor"""
     builder = ModBuilder.from_combos(
         [ModFn(set_transition_matrix, transition_matrix, scale_factor)
          for scale_factor in scale_factor_array]
@@ -61,7 +62,8 @@ if debug:
     print(f"DEBUG: config builder created")
 
 # Define analyzers, in this case, just the durations analyzer
-analyzers = [DurationsAnalyzer()]
+# show=False will save plots show=True will save and display plots
+analyzers = [DurationsAnalyzer(show=True)]
 
 exp_builder = ''
 if force_immunity:
