@@ -7,7 +7,7 @@ from dtk.interventions.itn_age_season import add_ITN_age_season
 from dtk.interventions.irs import add_node_IRS, add_IRS
 from dtk.interventions.outbreakindividual import recurring_outbreak
 from dtk.interventions.migrate_to import add_migration_event
-from dtk.interventions.health_seeking import add_health_seeking
+from malaria.interventions.health_seeking import add_health_seeking
 from dtk.utils.reports.CustomReport import BaseReport, BaseVectorStatsReport
 
 import json
