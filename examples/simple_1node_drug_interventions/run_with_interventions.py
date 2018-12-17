@@ -1,4 +1,3 @@
-from malaria.study_sites.site_setup_functions import summary_report_fn
 from dtk.utils.core.DTKConfigBuilder import DTKConfigBuilder
 from malaria.interventions.malaria_drug_campaigns import add_drug_campaign
 from malaria.reports.MalariaReport import add_summary_report
@@ -10,10 +9,6 @@ from configure_sahel_intervention_system import configure_sahel_intervention_sys
 
 from simtools.Analysis.AnalyzeManager import AnalyzeManager
 from prevalence_by_age_analyzer import PrevalenceAnalyzer
-
-
-import os
-
 
 
 def add_smc_group(cb, coverage=1.0, start_days=[60, 60+365], agemax=10, drug='DP'):
