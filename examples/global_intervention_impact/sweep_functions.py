@@ -8,7 +8,6 @@ from dtk.interventions.itn_age_season import add_ITN_age_season
 from dtk.interventions.property_change import change_individual_property
 from dtk.interventions.novel_vector_control import add_ATSB
 from malaria.interventions.health_seeking import add_health_seeking
-from malaria.interventions.malaria_drug_campaigns import add_drug_campaign
 
 
 def assign_net_ip(cb, hates_net_prop):
