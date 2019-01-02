@@ -1,16 +1,24 @@
-This example was built as part of the work to improve the intrahost model of malaria by simulating and analyzing malariatherapy like infections using a scalable set of transition probabilities in a stochastic matrix. 
+This example was built as part of the work to improve the intrahost model of malaria by simulating and analyzing
+malariatherapy like infections using a scalable set of transition probabilities in a stochastic matrix.
 
 Built by Jon Russell (jorussell@idmod.org) in November 2018. 
 
-Prereqs: Must have dtk-tools, dtk-tools-malaria packages installed. (run python setup.py or python setup.py develop for both pakcages).
+Prereqs:
+Must have dtk-tools, dtk-tools-malaria packages installed.
+(run python setup.py or python setup.py develop for both pakcages)
 
 Directory contents:
 
 run_malariatherapy_dtk.py - runs 1-year simulations of malaria challenge bite infections.
-immunity_transitions_configuration.py - contains helper functions for updating infection and immunity parameters (like first wave draw and transition probabilities)
-analyze_infection_durations.py - example analyzer for looking at infection durations from challenge trial style infections from Malaria Patient Report 
-bin/ - exe, dlls
-input/ - Malariatherapy_demographics.json, from-cfg.json
+
+immunity_transitions_configuration.py - contains helper functions for updating infection and immunity parameters
+(like first wave draw and transition probabilities)
+
+analyze_infection_durations.py - example analyzer for looking at infection durations from challenge trial style
+infections from Malaria Patient Report
+
+bin/ - executable, dlls
+input/ - Malariatherapy_demographics.json, from-cfg.json (configuration loaded from file)
 
 
 Description:
